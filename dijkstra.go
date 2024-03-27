@@ -12,6 +12,13 @@ func removeNode(slice []int, value int) []int {
 }
 
 func dijkstra(graph *Graph, start, end int) (int, []int) {
+	startNode := graph.vertices[start]
+	endNode := graph.vertices[end]
+
+	if len(startNode.edges) == 0 || len(endNode.edges) == 0 {
+		return Infinity, []int{}
+	}
+
 	dist := make(map[int]int)
 	prev := make(map[int]int)
 	unvisited := make([]int, 0, len(graph.vertices))
